@@ -13,14 +13,16 @@ namespace Reward_Points
         // calculate how many points a person has
         // store movie name
         // store when they viewed the movie
-        // store how many points were earned from the viewing
+        // store how many points were earned from the viewing. viewing = 1; 3D viewing = 1 + 2; 3D & delux = (1 + 2) + 4
         // use the DateTime class to store the date
 
         // Fields that will store data 
         private string _movieName;
-        private int _dateView;
+        private int _dateView; // when they viewed the movie
+        DateTime dat1 = new DateTime(); 
         private bool _threeDeeMovie;
         private bool _deluxSeat;
+        private int _rewardPoints;
 
         // Constructors ###################################################
 
@@ -33,6 +35,7 @@ namespace Reward_Points
             _dateView = 0;
             _threeDeeMovie = false;
             _deluxSeat = false;
+            _rewardPoints = 0;
         }
 
         /// <summary>
@@ -51,50 +54,23 @@ namespace Reward_Points
         }
 
         // Properties ###################################################
-        
+
+        // Points (read only) property - return points earned from viewing
         /// <summary>
-        /// This property gets and sets the name of the movie
+        /// Gets the points from the reward system
         /// </summary>
-        public string Name
+        public int Points
         {
-            get { return _movieName; }
-            set { _movieName = value; }
+            get { return _rewardPoints; }
         }
 
-        /// <summary>
-        /// This property gets the date of the movie viewing
-        /// </summary>
-        public int Date
-        {
-            get { return _dateView; }
-        }
 
-        /// <summary>
-        /// This property gets the info whether the client saw a 3D movies or not
-        /// </summary>
-        public bool ThreeD
-        {
-            get { return _threeDeeMovie; }
-        }
 
-        /// <summary>
-        /// This property gets the info whether the client was seated in a delux section or not
-        /// </summary>
-        public bool Delux
+        // Expired (method) - takes a DateTime object of a new date, and returns a bool
+
+        public int Expired(int date)
         {
-            get { return _deluxSeat; }
-        }
-        
-        // return the value of the points earned from this viewing
-        /// <summary>
-        /// 
-        /// </summary>
-        public void int Points()
-        {
-            // viewing = 1
-            // 3D viewing = 1 + 2
-            // 3D & delux = (1 + 2) + 4
-            get { }
+                       
         }
     }
 }
