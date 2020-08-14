@@ -18,8 +18,7 @@ namespace Reward_Points
 
         // Fields that will store data 
         private string _movieName;
-        private int _dateView; // when they viewed the movie
-        DateTime dat1 = new DateTime(); 
+        private DateTime _dateView; // when they viewed the movie 
         private bool _threeDeeMovie;
         private bool _deluxSeat;
         private int _rewardPoints;
@@ -32,7 +31,6 @@ namespace Reward_Points
         public MovieView()
         {
             _movieName = "";
-            _dateView = 0;
             _threeDeeMovie = false;
             _deluxSeat = false;
             _rewardPoints = 0;
@@ -45,12 +43,23 @@ namespace Reward_Points
         /// <param name="date">The date the client viewed the movie</param>
         /// <param name="three_dimentional">Did the client view a 3D movie?</param>
         /// <param name="delux">Was the client in the delux section</param>
-        public MovieView(string movie, int date, bool three_dimentional, bool delux)
+        public MovieView(string movie, DateTime date, bool three_dimentional, bool delux)
         {
             _movieName = movie;
             _dateView = date;
             _threeDeeMovie = three_dimentional;
             _deluxSeat = delux;
+            // Points calculations (IF see movie = 1)
+            _rewardPoints = 1;
+            if (_threeDeeMovie == true)
+            {
+                _rewardPoints += 2;
+            }
+            if (_deluxSeat == true)
+            {
+                _rewardPoints += 4;
+            }
+
         }
 
         // Properties ###################################################
@@ -67,10 +76,43 @@ namespace Reward_Points
 
 
         // Expired (method) - takes a DateTime object of a new date, and returns a bool
-
-        public int Expired(int date)
+        /// <summary>
+        /// Checking whether the reward points have expired or not
+        /// </summary>
+        /// <param name="today"></param>
+        /// <returns></returns>
+        public bool Expired(DateTime today)
         {
-                       
+            //DateTime dateTime = new DateTime(2008, 3, 1);  
+            if (today.Year > _dateView.Year + 1)
+            {
+                return true;
+            }
+            else if (today.Year > _dateView.Year)
+            {
+                if (today.Month > _dateView.Month)
+                {
+                    return true;
+
+                }
+                else
+                {
+                    if (today.Day > _dateView.Day)
+                    {
+                        return true;
+
+                    }
+                    else
+                    {
+                        return false;
+
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
