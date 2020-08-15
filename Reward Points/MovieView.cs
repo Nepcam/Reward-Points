@@ -18,7 +18,7 @@ namespace Reward_Points
 
         // Fields that will store data 
         private string _movieName;
-        private DateTime _dateView; // when they viewed the movie 
+        private DateTime _dateView; // when they viewed the movie and got rewarded points 
         private bool _threeDeeMovie;
         private bool _deluxSeat;
         private int _rewardPoints;
@@ -114,5 +114,10 @@ namespace Reward_Points
                 return false;
             }
         }
+
+        //public override string ToString()
+        //{
+        //    return Points.ToString().PadRight(10) + Expired().ToString().PadRight(5);
+        //}
     }
 }
